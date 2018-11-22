@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <p class="card-text">{{book.volumeInfo.publisher}}</p>
                     <p class="card-text">{{book.volumeInfo.publishedDate | date}}</p>
-                    <a href="#/detail/{{book.id}}" class="btn btn-primary col-12 col-md-auto col-lg-auto">Ver Detalle</a>
+                    <a [routerLink]="['../detail/', book.id]" class="btn btn-primary col-12 col-md-auto col-lg-auto">Ver Detalle</a>
                 </div>
             </div>
         </div>

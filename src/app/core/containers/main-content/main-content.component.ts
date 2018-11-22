@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { books } from "../../../books";
+import { books } from '../../../books';
 import { trigger, state, style, transition, animate} from '@angular/animations';
 
 @Component({
@@ -33,7 +33,7 @@ export class MainContentComponent implements OnInit {
     this.search(data);
   }
 
-  books : any[] = [];
+  books: any[] = [];
 
   constructor() { }
 

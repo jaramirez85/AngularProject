@@ -8,7 +8,7 @@ export const routes: Routes = [
         component: MainContentComponent
     },
     {
-        path: 'detail',
+        path: 'detail/:id',
         component: DetailBookComponent
     },
     {
