@@ -10,13 +10,17 @@ import { HeaderAsideLeftComponent } from './components/header-aside-left/header-
 import { TopSearchFormComponent } from './components/top-search-form/top-search-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmailPipePipe } from './component/email-pipe.pipe';
+import { RouterModule } from '@angular/router';
+import { DetailBookComponent } from './containers/detail-book/detail-book.component';
+import { routes } from './routes.core';
 
 @NgModule({
-  declarations: [CoreComponent, TopNavBarComponent, AsideLeftComponent, MainContentComponent, MainMenuComponent, HeaderAsideLeftComponent, TopSearchFormComponent, EmailPipePipe],
+  declarations: [CoreComponent, TopNavBarComponent, AsideLeftComponent, MainContentComponent, MainMenuComponent, HeaderAsideLeftComponent, TopSearchFormComponent, EmailPipePipe, DetailBookComponent],
   imports: [
     CommonModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes)
   ],
   exports: [
     CoreComponent
