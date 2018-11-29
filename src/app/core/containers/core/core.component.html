@@ -1,13 +1,14 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <app-top-nav-bar (searchTop)="searchBook($event)" (toggleMenuTop)="changeSideState($event)"></app-top-nav-bar>
-    </div>
+<div> 
+  <div>
+    <app-top-nav-bar (searchTop)="searchBook($event)" (asideState)="asideState($event)"></app-top-nav-bar>
   </div>
-  <div class="row body-content">
-    <app-aside-left class="col-3 left-aside" [@asideAnimation] = "asideState" [ngClass]="asideState == 'close' ? 'aside-close':''"></app-aside-left>
-    <div class="col-9 main-section">
-      <router-outlet></router-outlet>
-    </div>
+</div>
+<div class="row body-content">
+  <app-aside-left [stateClick]="stateHamburguer" class="col-3"></app-aside-left>
+  <!--app-main-content [dataBook]="dataBook" class="col-9 main-section"></app-main-content-->
+ <div  class="col-9 main-section">
+   <router-outlet></router-outlet> 
   </div>
+</div>
 </div>

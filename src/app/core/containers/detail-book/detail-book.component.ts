@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params} from '@angular/router';
-import { books } from '../../../books';
+import { ActivatedRoute,Params } from "@angular/router";
+import {books} from "../../../books";
 
 @Component({
   selector: 'app-detail-book',
@@ -8,23 +8,19 @@ import { books } from '../../../books';
   styleUrls: ['./detail-book.component.css']
 })
 export class DetailBookComponent implements OnInit {
-
-  book: any;
-
+  id:string;
   constructor(private route: ActivatedRoute) { }
+   book :any;
 
   ngOnInit() {
-    let id: string;
-    this.route.params.subscribe((params: Params) => {
-      id = params.id;
+    this.route.params.subscribe(
+      (params: Params)=> {
+      this.id = params.id;
     });
-
     this.book = books.items.find(
-      item => {
-        return item.id === id;
+      item =>{
+        return item.id === this.id;
       }
     );
-
   }
-
 }

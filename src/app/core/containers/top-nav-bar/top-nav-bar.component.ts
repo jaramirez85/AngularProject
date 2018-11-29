@@ -7,26 +7,22 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TopNavBarComponent implements OnInit {
 
-  @Output() searchTop = new EventEmitter<string>();
-  @Output() toggleMenuTop = new EventEmitter<string>();
-  _state: string = 'open';
+  stateHamburguer:string = 'open';
 
+  @Output() searchTop= new EventEmitter<string>();
+  @Output() asideState= new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
   }
 
-  search(data: string) {
+  search(data :string){
     this.searchTop.emit(data);
   }
 
-  close() {
-    if (this._state === 'open') {
-      this._state = 'close';
-    } else {
-      this._state = 'open';
-    }
-    this.toggleMenuTop.emit(this._state);
+  asideStateChange(){
+    this.stateHamburguer= this.stateHamburguer == 'open'?'close':'open';
+    this.asideState.emit(this.stateHamburguer);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-core',
@@ -7,9 +7,8 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 })
 export class CoreComponent implements OnInit {
 
-  dataBook: string;
-  asideState: string;
-
+  dataBook :string;
+  stateHamburguer :string;
   constructor() { }
 
   ngOnInit() {
@@ -19,8 +18,8 @@ export class CoreComponent implements OnInit {
     this.dataBook = data;
   }
 
-  changeSideState(data: string){
-    this.asideState = data;
+  asideState(data :string){
+    this.stateHamburguer = data;
   }
 
 }

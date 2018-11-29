@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-:root {
+:root{
     --main-style-color: rgba(202, 86, 86, 0.8);
     --main-shadow-color: rgba(0, 0, 0, .4);
     --header-back-color: rgba(215, 219, 224, 1);
@@ -8,75 +8,65 @@
     --button-border-color: rgba(83, 156, 252, 1);
 }
 
+/** header styles**/
+
 html, body, .container-fluid {
     height: 100%;
 }
 
-/** Header Styles **/
-
-header.pokeNavBar {
+header.pokeNavBar{
     min-height: 50px;
     background-color: var(--main-style-color);
 }
 
-header.pokeNavBar .toggle-sidebar, h1 {
+header.pokeNavBar .toggle-sidebar, h1{
     color: var(--main-title-color);
 }
 
-header.pokeNavBar h1 {
+header.pokeNavBar h1{
     font-size: 1.4em;
     display: inline-block;
 }
 
-a.link-profile img {
+a.link-profile img{
     width: 40px;
     border-radius: 40px;
 }
 
-/** Body Content **/
+/** Body content **/
 
 div.body-content {
     height: 100%;
 }
 
-div.user-image > img {
-    width: 80px;
-    border-radius: 50px;
+div.user-image > img{
+width: 80px;
+border-radius: 50px;
 }
 
-.left-aside {
-    box-shadow: 1px 0 2px var(--main-shadow-color);
-    padding: 0;
-    height: 100%;
+aside.left-aside{
+box-shadow: 1px 0 2px var(--main-shadow-color);
+padding: 0;
+height: 100%;
 }
 
-.aside-header {
+aside .aside-header{
     background-color: var(--header-back-color);
-    padding: 16px 10px;
+    padding: 16px 16px;
+}
+aside.left-aside2{
+flex: 0 0 50px;
 }
 
-.aside-close {
-    flex: 0 0 50px;
-}
+aside.left-aside2 .user-info{
+    display: none;
+    }
 
-.aside-close .user-info {
+aside.left-aside2 span{
     display: none;
 }
 
-.aside-close .user-image > img {
+aside.left-aside2 img{
     width: 30px;
     height: 30px;
-}
-
-.aside-close  span {
-    display: none;
-}
-
-
-.book h1 {
-    color:var(--main-shadow-color);
-}
-
-.book .book-image img {
-    width: 400px;
 }
