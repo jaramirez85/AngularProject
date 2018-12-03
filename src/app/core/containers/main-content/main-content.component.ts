@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {books} from "../../../books";
+import { books } from "../../../books";
+import { MessagesService } from "src/app/alerts/services/messages.service";
+import { IMessage } from "src/app/alerts/models/interfaces/message";
 
 @Component({
   selector: 'app-main-content',
@@ -7,32 +9,27 @@ import {books} from "../../../books";
   styleUrls: ['./main-content.component.css']
 })
 export class MainContentComponent implements OnInit {
-_dataBook :string;
 
-@Input()
-get dataBook():string{
-   return this._dataBook;
-};
 
-set dataBook (data :string){
-  this._dataBook =data;
-  this.search(data);
-}
+  constructor(private msgService: MessagesService) { }
 
-books : any[] = [];
-  constructor() { }
-
-  ngOnInit() {
-    this.books = books.items;
+  ngOnInit() {    
+    window.addEventListener('online', this.updateConnection.bind(this));
+    window.addEventListener('offline', this.updateConnection.bind(this));
   }
-search(query :string){
-  let book = this.books.find(
-    item =>{
-      return item.volumeInfo.title === query;
-    }
-  );
 
-  this.books =[];
-  this.books.push(book);
-}
+  updateConnection(event) {
+    let msg: IMessage;
+
+    if(event.type == 'online') {
+      msg = {msg: 'Se ha establecido conexión de red', type: 'success'};
+    }else if(event.type == 'offline') {
+      msg = {msg: 'Se ha perdido la conexión de red', type: 'error'};
+    }
+
+    this.msgService.message(msg);
+  }
+
+
+  
 }

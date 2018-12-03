@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MainContentComponent } from './containers/main-content/main-content.component';
 import { RouterModule } from "@angular/router";
-import { routes} from './routes.poke-main';
+import { PokeListComponent } from './containers/poke-list/poke-list.component';
+
+import { routes } from "./routes.poke";
 
 @NgModule({
-  declarations: [MainContentComponent],
+  declarations: [PokeListComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)

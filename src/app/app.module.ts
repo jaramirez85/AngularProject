@@ -1,10 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CoreModule} from './core/core.module';
+import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
-import { routes } from "./routes";
-import { AuthModule} from "./auth/auth.module";
+import { CoreModule } from "./core/core.module";
+import { AuthModule } from "./auth/auth.module";
+import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+import { InMemoryDataService } from "./data-api/books-dummy-api";
 
+import { routes } from "./routes";
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -14,8 +18,16 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     CoreModule,
+    RouterModule.forRoot(routes),
     AuthModule,
-    RouterModule.forRoot(routes)
+    HttpModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {
+        dataEncapsulation: false,
+        delay: 3000
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

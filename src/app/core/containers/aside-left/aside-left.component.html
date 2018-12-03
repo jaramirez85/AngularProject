@@ -1,6 +1,6 @@
-<aside id="idaside" class="left-aside" [@asideAnimation]='stateClick' [ngClass]="(stateClick == 'close'?'left-aside2':'')">
+<aside>
     <div class="aside-header">
-       <app-main-menu-header [user]="user"></app-main-menu-header>
+        <app-header-aside-left [user]="user"></app-header-aside-left>
     </div>
     <div class="aside-body">
         <app-main-menu></app-main-menu>

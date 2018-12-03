@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderAsideLeftComponent implements OnInit {
 
-  public today : number 	= Date.now();
-  @Input() user: {name: string, photoUrl: string, email: string};
+  @Input() user: {name:string, photoUrl:string};
   
   constructor() { }
 
