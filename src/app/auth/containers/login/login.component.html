@@ -10,4 +10,9 @@
       <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Sign In</button>
     </div>
   </div>
+  <div class="row">    
+    <a class="btn btn-block btn-social btn-google" (click)="signWithGoogle($event)">
+      <i class="fa fa-google-plus"></i> Sign in using Google+
+    </a>
+  </div>
 </form>
