@@ -1,18 +1,12 @@
-<form [formGroup]="loginForm" (ngSubmit)="submit()">
-  <div class="form-group has-feedback">
-    <input formControlName="email" type="email" class="form-control" placeholder="Usuario" required name="username">
-  </div>
-  <div class="form-group has-feedback">
-    <input formControlName="password" type="password" class="form-control" placeholder="Password" required name="password">
-  </div> 
-  <div class="row">
-    <div class="box-footer">
-      <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Sign In</button>
-    </div>
-  </div>
-  <div class="row">    
-    <a class="btn btn-block btn-social btn-google" (click)="signWithGoogle($event)">
-      <i class="fa fa-google-plus"></i> Sign in using Google+
-    </a>
-  </div>
-</form>
+<div class="background-login" [ngStyle]="{height: heightDiv}">
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="">
+        <b>Bzg POKE</b>APP</a>
+    </div>    
+    <div class="login-box-body">
+      <p class="login-box-msg">Ingresa tu usuario y contraseña</p>      
+      <app-login-form (submitted)="auth($event)" (signByGoogle)="signWithGoogle($event)"></app-login-form>
+    </div>    
+  </div>  
+</div>

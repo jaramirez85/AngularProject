@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PokemonsService } from "../../services/pokemons.service";
 import { books } from "../../../books";
+import { IPokeList } from '../../models/interfaces/poke-list';
 
 @Component({
   selector: 'app-poke-list',
@@ -8,10 +10,16 @@ import { books } from "../../../books";
 })
 export class PokeListComponent implements OnInit {
 
-  bookList = books.items;
-  constructor() { }
+  pokeList: IPokeList;
+  constructor(private pokeService: PokemonsService) { }
 
   ngOnInit() {
+    this.pokeService.list()
+    .subscribe(
+      list => {
+        this.pokeList = list;
+      }
+    );
   }
 
 }

@@ -19,9 +19,9 @@ export class AlertMessagesComponent implements OnInit {
   ngOnInit() {
     this.msgService.getMessage()
     .subscribe(
-      (msg: IMessage) => {
+      (msg:IMessage) => {
         this.message = msg;
-        switch (this.message.type) {
+        switch(this.message.type) {
           case 'success': this.classType = 'alert-success';
           break;
           case 'error': this.classType = 'alert-danger';

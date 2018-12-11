@@ -1,12 +1,12 @@
-import { Routes } from '@angular/router';
-import { CoreComponent } from './containers/core/core.component';
-import { AuthGuardService } from '../auth/services/auth-guard.service';
+import { Routes } from "@angular/router";
+import { AuthGuardService } from "../auth/services/auth-guard.service";
+import { CoreComponent } from "./containers/core/core.component";
 
-export const routes: Routes = [
+export const routes:Routes = [
     {
         path: 'main',
         component: CoreComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [AuthGuardService],        
         children: [
             {
                 path: 'pokemons',
@@ -15,6 +15,10 @@ export const routes: Routes = [
             {
                 path: 'collections',
                 loadChildren: '../collections/collections.module#CollectionsModule'
+            },
+            {
+                path: 'favorites',
+                loadChildren: '../favorites/favorites.module#FavoritesModule'
             },
             {
                 path: '', redirectTo: 'pokemons', pathMatch: 'full'

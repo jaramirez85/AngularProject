@@ -1,0 +1,16 @@
+<div class="row" id="pokeList">
+  <div *ngFor="let poke of pokeList" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+      <div class="card">
+          <div class="card-header">
+              {{poke.name}}
+          </div>
+          <img class="card-img-top" src="{{poke?.sprites?.front_default}}" />
+          <div class="card-body">
+              <p class="card-text">Abilities</p>
+              <div class="col-12">
+                <span *ngFor="let ab of poke?.abilities" class="badge badge-pill badge-success">{{ab?.ability.name}}</span>
+              </div>          
+          </div>
+      </div>
+  </div>
+</div>

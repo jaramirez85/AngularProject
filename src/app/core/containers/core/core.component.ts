@@ -23,7 +23,7 @@ export class CoreComponent implements OnInit {
   dataBook: string;
   state: string;
 
-  constructor() { }
+  constructor() { }  
 
   ngOnInit() {
   }
