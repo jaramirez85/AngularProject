@@ -10,7 +10,7 @@ import { MessagesService } from 'src/app/alerts/services/messages.service';
 })
 export class FavoritesService {
 
-  favsRef : AngularFireList<any>;
+  favsRef: AngularFireList<any>;
   user: firebase.User;
 
   constructor(private authFire: AngularFireAuth, private rdb: AngularFireDatabase, private alertService: MessagesService) { 
