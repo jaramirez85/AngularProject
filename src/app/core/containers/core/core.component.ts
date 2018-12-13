@@ -1,5 +1,6 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter, Output } from '@angular/core';
 import { trigger,state,style,transition,animate } from "@angular/animations";
+import { PokemonsService } from 'src/app/poke-main/services/pokemons.service';
 
 @Component({
   selector: 'app-core',
@@ -20,16 +21,15 @@ import { trigger,state,style,transition,animate } from "@angular/animations";
 })
 export class CoreComponent implements OnInit {
 
-  dataBook: string;
   state: string;
 
-  constructor() { }  
+  constructor(private pokeService: PokemonsService) { }
 
   ngOnInit() {
   }
 
-  searchBook(data: string){
-    this.dataBook = data;
+  searchBook(data: string) {
+    this.pokeService.searchPokemons(data);
   }
 
   eventAside(data: string) {

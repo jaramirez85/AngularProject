@@ -14,6 +14,7 @@ import { IPokeList } from '../models/interfaces/poke-list';
 })
 export class PokemonsService {
 
+  private subjectSearch = new Subject<string>();
   favsRef: AngularFireList<any>;
   user: firebase.User;
   url: string = environment.apiUrl;
@@ -32,6 +33,13 @@ export class PokemonsService {
 
   }
 
+  searchPokemons(name: string) {
+    this.subjectSearch.next(name);
+  }
+  getSearchPokemons(): Observable<string> {
+    return this.subjectSearch.asObservable();
+  }
+
   list(): Observable<IPokeList> {
     const url = `${this.url}pokemon/`;
     return this.http.get<IPokeList>(url)
@@ -44,6 +52,14 @@ export class PokemonsService {
     return this.http.get<any>(url)
     .pipe(
       catchError(this.handleError('Get Pokemon', null))
+    );
+  }
+
+  getPokemonByName(name: string): Observable<any> {
+    const url = `${this.url}pokemon/${name}/`;
+    return this.http.get<any>(url)
+    .pipe(
+      catchError(this.handleError(`Get Pokemon by Name (${name})`, null))
     );
   }
 

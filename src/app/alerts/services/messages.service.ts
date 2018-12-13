@@ -15,7 +15,7 @@ export class MessagesService {
     this.subject.next(msg);
   }
 
-  getMessage() : Observable<IMessage> {
+  getMessage(): Observable<IMessage> {
     return this.subject.asObservable();
   }
 }

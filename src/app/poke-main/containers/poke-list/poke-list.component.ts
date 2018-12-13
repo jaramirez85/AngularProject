@@ -13,12 +13,40 @@ export class PokeListComponent implements OnInit {
   constructor(private pokeService: PokemonsService) { }
 
   ngOnInit() {
-    this.pokeService.list()
+    this.loadAllPokemons();
+
+    this.pokeService.getSearchPokemons()
     .subscribe(
-      list => {
-        this.pokeList = list;
+      pokeToSearch => {
+        if (pokeToSearch) {
+          this.pokeService.getPokemonByName(pokeToSearch).subscribe(
+            pokeInfo => {
+              this.pokeList = {
+                count: 1,
+                next: null,
+                previous: null,
+                results : []
+              };
+              if (pokeInfo) {
+                this.pokeList.results.push({
+                  name : pokeInfo.name,
+                  url: `https://pokeapi.co/api/v2/pokemon/${pokeInfo.id}/`
+                });
+              }
+            }
+          );
+        } else {
+          this.loadAllPokemons();
+        }
       }
     );
   }
 
+
+  private loadAllPokemons() {
+    this.pokeService.list()
+      .subscribe(list => {
+        this.pokeList = list;
+      });
+  }
 }

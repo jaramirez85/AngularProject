@@ -17,7 +17,7 @@ export class TopNavBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  search(data :string) {
+  search(data: string) {
     this.searchTop.emit(data);
   }
 
