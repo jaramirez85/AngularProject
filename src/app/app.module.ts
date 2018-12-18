@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from '@angular/core';
+import { CoreModule} from './core/core.module';
 import { RouterModule } from "@angular/router";
-import { CoreModule } from "./core/core.module";
-import { AuthModule } from "./auth/auth.module";
-//import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-//import { InMemoryDataService } from "./data-api/books-dummy-api";
+import { AuthModule} from "./auth/auth.module";
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './data-api/books-dummy-api';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
+import {NgbModule, NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
@@ -23,6 +24,7 @@ import { AppComponent } from './app.component';
   imports: [
     CoreModule,
     RouterModule.forRoot(routes),
+    NgbModule,
     AuthModule,
     HttpModule,
     HttpClientModule,
