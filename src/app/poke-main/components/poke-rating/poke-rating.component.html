@@ -1,0 +1,6 @@
+<ngb-rating [(rate)]="pokemonRate">
+    <ng-template let-fill="fill" let-index="index">
+      <span class="star" [class.filled]="fill === 100">&#9733;</span>
+    </ng-template>
+  </ngb-rating>
+

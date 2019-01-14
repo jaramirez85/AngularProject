@@ -1,0 +1,17 @@
+<ngb-carousel *ngIf="images">
+    <ng-template ngbSlide *ngIf="images[0]">
+      <img [src]="images[0]" >      
+    </ng-template>
+    <ng-template ngbSlide *ngIf="images[1]">
+      <img [src]="images[1]" >      
+    </ng-template>
+    <ng-template ngbSlide *ngIf="images[2]">
+        <img [src]="images[2]" >      
+      </ng-template>
+    <ng-template ngbSlide *ngIf="images[3]">
+        <img [src]="images[3]" >      
+      </ng-template>
+    <ng-template ngbSlide *ngIf="images[4]">
+        <img [src]="images[4]" >      
+    </ng-template>
+</ngb-carousel>

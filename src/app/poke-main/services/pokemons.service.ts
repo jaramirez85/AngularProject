@@ -36,6 +36,15 @@ export class PokemonsService {
   searchPokemons(name: string) {
     this.subjectSearch.next(name);
   }
+
+  getPokemonById(id:string):Observable<any>{
+    return this.http.get<any>(`${this.url}pokemon/${id}/`)
+    .pipe(
+      catchError(this.handleError('Get Pokemons By Id', null))
+    );
+  }
+
+
   getSearchPokemons(): Observable<string> {
     return this.subjectSearch.asObservable();
   }

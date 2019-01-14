@@ -1,3 +1,23 @@
-<p>
-  poke-detail works! {{_id}}
-</p>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <span class="capitalize">{{_pokemon?.name}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="row">
+          <div class="col img-slider">
+              <app-image-slide [images]="images"></app-image-slide>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col" style="text-align: center">
+              <app-poke-rating></app-poke-rating>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
