@@ -6,6 +6,38 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-9" >
+        <div class="row top-buffer" >
+            <div class="col-2" >
+                <span class="badge badge-pill badge-info text_detail">Height</span>
+              </div>
+              <div class="col-10">
+                  <span class="text_detail">{{_pokemon.height}}</span>
+                </div>
+        </div>
+        <div class="row top-buffer" >
+            <div class="col-2" >
+                <span class="badge badge-pill badge-warning text_detail">Weight</span>
+              </div>
+              <div class="col-10">
+                  <span class="text_detail">{{_pokemon.weight}}</span>
+                </div>
+        </div>
+        <div class="row top-buffer"  *ngFor="let a of abilities">
+          <div class="col-2">
+            <span class="badge badge-pill badge-success text_detail">{{a.name}}</span>
+          </div>
+          <div class="col-10">
+              <span class="text_detail">{{a.description}}</span>
+            </div>
+        </div>
+        <div class="row top-buffer">
+          <div class="col-1" *ngFor="let type of _pokemon.types">
+              <span class="badge badge-pill badge-danger text_detail">{{type.type.name}}</span>
+          </div>
+        </div>
+
+      </div>
       <div class="col-3">
         <div class="row">
           <div class="col img-slider">
@@ -18,6 +50,13 @@
             </div>
         </div>
       </div>
+    </div>
+    <div class="row">
+        <div *ngFor="let pokemon of evolution"  class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <div>
+                <app-poke-card [poke]="pokemon"></app-poke-card>
+            </div>
+        </div>
     </div>
   </div>
 
