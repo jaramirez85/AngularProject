@@ -1,6 +1,9 @@
 import { Component, OnInit, OnChanges, EventEmitter, Output } from '@angular/core';
 import { trigger,state,style,transition,animate } from "@angular/animations";
 import { PokemonsService } from 'src/app/poke-main/services/pokemons.service';
+import { Store, select} from '@ngrx/store';
+import * as fromRoot from '../../../reducers';
+import { Observable} from 'rxjs';
 
 @Component({
   selector: 'app-core',
@@ -22,8 +25,15 @@ import { PokemonsService } from 'src/app/poke-main/services/pokemons.service';
 export class CoreComponent implements OnInit {
 
   state: string;
+  stateAside$: Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
 
-  constructor(private pokeService: PokemonsService) { }
+  constructor(private pokeService: PokemonsService, private store: Store<fromRoot.State>) { 
+    this.stateAside$.subscribe(
+      state => {
+        this.state = state;
+      }
+    );
+  }
 
   ngOnInit() {
   }
@@ -32,8 +42,8 @@ export class CoreComponent implements OnInit {
     this.pokeService.searchPokemons(data);
   }
 
-  eventAside(data: string) {
+  /*eventAside(data: string) {
     this.state = data;
-  }
+  }*/
 
 }

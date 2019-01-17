@@ -16,6 +16,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { routes } from "./routes";
 import { environment } from "../environments/environment";
 import { AppComponent } from './app.component';
+import { StoreModule} from '@ngrx/store';
+import { StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { reducers, metaReducer} from './reducers';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,13 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebaseConfig, environment.firebaseConfig.projectId),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, {metaReducers: metaReducer}),
+    StoreDevtoolsModule.instrument({
+      name: 'Bzg Poke App', //Id de la App en el plugin
+      logOnly: environment.production, //En Prod solo permite ver logs
+      maxAge: 30 //Historial de estados
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
