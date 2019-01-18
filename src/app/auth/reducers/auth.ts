@@ -1,4 +1,4 @@
-import { User } from 'firebase';
+import { UserInfo } from 'firebase';
 import { AuthActionTypes, AuthActions} from '../actions/auth';
 
 export interface State {
@@ -6,7 +6,7 @@ export interface State {
     loaded: boolean;
     error:  any | null;
     loggedIn: boolean;
-    user: User | null;
+    user: UserInfo | null;
 }
 
 export const initialState: State = {

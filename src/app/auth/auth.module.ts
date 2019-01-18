@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { routes } from "./routes.auth";
 import { reducers} from './reducers';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { AlertsModule } from '../alerts/alerts.module';
 
 @NgModule({
   declarations: [LoginComponent, LoginFormComponent],
@@ -14,7 +15,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    StoreModule.forFeature('auth', reducers)
+    StoreModule.forFeature('auth', reducers),
+    AlertsModule
   ]
 })
 export class AuthModule { }
