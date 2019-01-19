@@ -4,6 +4,8 @@ import { Store, select} from '@ngrx/store';
 import * as fromRoot from '../../../reducers';
 import * as layout from '../../actions/layout';
 import {Observable} from 'rxjs';
+import { User } from 'firebase';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -17,16 +19,20 @@ export class TopNavBarComponent implements OnInit {
 
   _state: string = 'open';
   stateAside$: Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
+  user: User;
 
-  constructor(private store: Store<fromRoot.State>) {
+  constructor(private store: Store<fromRoot.State>, private authService: AuthService) {
     this.stateAside$.subscribe(
       aside => {
         this._state = aside;
       }
     );
-  }
-
-  ngOnInit() {
+    this.authService.profileUser()
+    .subscribe(
+      user => {
+        this.user = user;
+      }
+    );
   }
 
   search(data: string) {
@@ -36,12 +42,8 @@ export class TopNavBarComponent implements OnInit {
   close(){
     if(this._state == 'open'){
       this.store.dispatch(new layout.CloseSideNav());
-      //this._state = 'close';
-      //this.stateAside.emit(this._state);
     }else {
       this.store.dispatch(new layout.OpenSideNav());
-      //this._state = 'open';
-      //this.stateAside.emit(this._state);
     }
   }
 

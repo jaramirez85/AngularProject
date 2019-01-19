@@ -1,11 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --main-style-color: rgba(202, 86, 86, 0.8);
+    --main-style-color: rgba(54, 243, 202, 0.507);
     --main-shadow-color: rgba(0, 0, 0, .4);
-    --header-back-color: rgba(215, 219, 224, 1);
+    --header-back-color: rgb(23, 162, 184);
     --main-title-color: rgba(255, 255, 255, 1);
     --input-border-color: rgba(237, 238, 239, 1);
     --button-border-color: rgba(83, 156, 252, 1);
+}
+
+
+html, body {
+    font-family: 'Lobster', cursive;
+    background-color: var(--main-style-color);
 }
 
 html, body, .container-fluid {
@@ -47,6 +53,7 @@ div.user-image > img {
 .left-aside {
     box-shadow: 1px 0 2px var(--main-shadow-color);
     padding: 0;
+    background-color: var(--main-style-color);
 }
 
 .aside-header {
@@ -78,4 +85,15 @@ div.user-image > img {
 
 .book .book-image img {
     width: 400px;
+}
+
+
+img.loading-image {
+    position: absolute;
+    width:592px; /*image width */
+    height:512px; /*image height */
+    left:50%; 
+    top:50%;
+    margin-left:-296px; /*image width/2 */
+    margin-top:-256px; /*image height/2 */
 }

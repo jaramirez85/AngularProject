@@ -1,7 +1,7 @@
 <div class="row" id="pokeList">
   <div *ngFor="let poke of pokeList" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
       <div class="card">
-          <div class="card-header">
+          <div class="card-header bg-info text-white">
               {{poke.name}}
           </div>
           <img class="card-img-top" src="{{poke?.sprites?.front_default}}" />

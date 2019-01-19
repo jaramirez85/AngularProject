@@ -5,7 +5,7 @@ export interface State {
 }
 
 const initialState: State = {
-    showSideNav: 'close'
+    showSideNav: 'open'
 }
 
 export function reducer(state = initialState, action: LayoutActions): State {
