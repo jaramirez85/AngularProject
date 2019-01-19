@@ -14,6 +14,9 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class TopNavBarComponent implements OnInit {
 
+  ngOnInit(): void {
+  }
+
   @Output() searchTop = new EventEmitter<string>();
   @Output() stateAside = new EventEmitter<string>();
 
