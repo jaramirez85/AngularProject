@@ -1,6 +1,33 @@
-<ngb-rating [(rate)]="pokemonRate">
-    <ng-template let-fill="fill" let-index="index">
-      <span class="star" [class.filled]="fill === 100">&#9733;</span>
-    </ng-template>
-  </ngb-rating>
+<div class="row">
+    <div class="col">
+      <form [formGroup]="myForm">
+          <ngb-rating formControlName="rating" [(rate)]="rate" (click)="setRating()" >
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star"  [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+          </ngb-rating>
+      </form>
+        
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col">
+      <ngb-rating [(rate)]="averageRate" [readonly]="true" >
+          <ng-template let-fill="fill" let-index="index">
+            <span class="star"  [class.filled2]="fill === 100">&#9733;</span>
+          </ng-template>
+      </ngb-rating>
+      
+  </div>
+</div>
+
+<div class="row">
+    <div class="col">
+      <span class="italic">Total Votes: {{totalVotes}}</span>
+    </div>
+</div>  
+
+
+
 
