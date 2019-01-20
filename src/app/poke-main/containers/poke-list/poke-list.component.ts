@@ -10,6 +10,7 @@ import { IPokeList } from '../../models/interfaces/poke-list';
 export class PokeListComponent implements OnInit {
 
   pokeList: IPokeList;
+  detailLink:string="../detail";
   constructor(private pokeService: PokemonsService) { }
 
   ngOnInit() {

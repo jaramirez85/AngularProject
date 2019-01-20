@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { PokemonsService } from '../../services/pokemons.service';
 import { copyAnimationEvent } from '@angular/animations/browser/src/render/shared';
 
@@ -11,17 +11,34 @@ import { copyAnimationEvent } from '@angular/animations/browser/src/render/share
 })
 export class PokeDetailComponent implements OnInit {
 
+  detailLink:string="../../detail";
+
   _id: string;
   _pokemon: any;
   images: string[]
   abilities: Array<any> = new Array()
   evolution: Array<any> = new Array()
 
-  constructor(private route: ActivatedRoute, private pokeService: PokemonsService) { }
+  constructor(private route: ActivatedRoute, private pokeService: PokemonsService,private router: Router) {
+
+    // override the route reuse strategy
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+      return false;
+   }
+
+   this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+         // trick the Router into believing it's last link wasn't previously loaded
+         this.router.navigated = false;
+         // if you need to scroll back to top, here is the right place
+         window.scrollTo(0, 0);
+      }
+  });
+   }
 
   ngOnInit() {
     this.route.params.subscribe(
-      (params: Params) => {
+      (params: Params) => {  
         this._id = params.id;
       }
     );

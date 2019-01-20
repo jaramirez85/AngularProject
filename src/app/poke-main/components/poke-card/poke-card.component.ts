@@ -13,6 +13,7 @@ export class PokeCardComponent implements OnInit {
   _pokeResult: {name: string, url: string};
   _poke: any;
   collectiosList: any[] = [];
+  @Input() detailLink:string;
 
   @Input()
   get poke(): {name: string, url: string}{
