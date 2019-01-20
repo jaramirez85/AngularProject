@@ -60,22 +60,23 @@ div.user-image > img {
     background-color: var(--header-back-color);
     padding: 16px 10px;
 }
-
-.aside-close {
-    flex: 0 0 50px;
-}
-
-.aside-close .user-info {
-    display: none;
-}
-
-.aside-close .user-image > img {
-    width: 30px;
-    height: 30px;
-}
-
-.aside-close  span {
-    display: none;
+@media (min-width:768px) {
+    .aside-close {
+        flex: 0 0 50px;
+    }
+    
+    .aside-close .user-info {
+        display: none;
+    }
+    
+    .aside-close .user-image > img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .aside-close  span {
+        display: none;
+    }
 }
 
 

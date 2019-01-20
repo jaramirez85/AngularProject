@@ -19,7 +19,18 @@ import { Observable} from 'rxjs';
       })),
       transition('open => close', animate('100ms ease-out')),
       transition('close => open', animate('100ms ease-in'))
+    ]),
+    trigger('asideAnimationMobile', [
+      state('close', style({
+        height: '0',
+      })),
+      state('open', style({
+        height: '100%'
+      })),
+      transition('open => close', animate('100ms ease-out')),
+      transition('close => open', animate('100ms ease-in'))
     ])
+
   ]
 })
 export class CoreComponent implements OnInit {
