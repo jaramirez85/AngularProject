@@ -53,7 +53,6 @@ div.user-image > img {
     box-shadow: 1px 0 2px var(--main-shadow-color);
     padding: 0;
     background-color: var(--main-style-color);
-    height: 100%;
 }
 
 .aside-header {
