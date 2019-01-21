@@ -1,3 +1,23 @@
 <div> 
   <app-collection-modal-content  (submitted)="create($event)"></app-collection-modal-content>
 </div>
+<div class="row" id="collectionList">
+  <div *ngFor="let collection of collectionList" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="card">
+          <div class="card-header">
+              {{collection.name}}
+          </div>
+          <div class="card-body">
+              <div class="col-6">
+                <p class="card-text">Description</p>
+                <span>{{collection.description}}</span>
+              </div>
+              <div class="col-12">  
+                <a href="#" class="card-link">Delete</a>
+                <a class="card-link" [routerLink]="['../collectionDetail', collection?.name]">Ver Collection</a>
+              </div>
+          </div>
+      </div>
+      <div class="col-12 col-xl-12"> </div>
+  </div>
+</div>

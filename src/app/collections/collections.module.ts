@@ -6,9 +6,10 @@ import { routes } from "./routes.collections";
 import { CollectionModalContentComponent } from './components/collection-modal-content/collection-modal-content.component';
 import {NgbModule, NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CollectionPokemonsComponent } from './containers/collection-pokemons/collection-pokemons.component';
 
 @NgModule({
-  declarations: [CollectionListComponent, CollectionModalContentComponent],
+  declarations: [CollectionListComponent, CollectionModalContentComponent, CollectionPokemonsComponent],
   imports: [
     CommonModule,
     NgbModule.forRoot(),

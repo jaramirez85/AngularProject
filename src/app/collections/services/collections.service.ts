@@ -37,6 +37,9 @@ export class CollectionsService {
 
   createCollection(collection : any){
     const promise = this.collectRef.push(collection);
+    promise.then(_ => {
+      this.alertService.message({msg: 'new collection created', type: 'success'});
+    });
   }
 
   deleteCollection(key: any){
