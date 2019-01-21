@@ -78,6 +78,15 @@ div.user-image > img {
     }
 }
 
+.user-info h3{
+    color: white;
+    font-family: 'Lobster', cursive;
+    text-transform: lowercase;
+}
+
+.user-info::first-letter { 
+    text-transform: uppercase; 
+}
 
 .book h1 {
     color:var(--main-shadow-color);
