@@ -39,10 +39,17 @@ export class CollectionsService {
     const promise = this.collectRef.push(collection);
   }
 
+  deleteCollection(key: any){
+    const promise = this.rdb.list(`collections/${this.user.uid}/${key}`).remove();
+    promise.then(_ => {
+      this.alertService.message({msg: 'The collection has been removed', type: 'success'});
+    });
+  }
+
   addToCollection(poke: any, collectionItem : any) {
     const promise = this.rdb.list(`collections/${this.user.uid}/${collectionItem.key}/pokemons`).push(poke);
     promise.then(_ => {
-      this.alertService.message({msg: 'Pokemon Agregado a Collection', type: 'success'});
+      this.alertService.message({msg: `Pokemon ${poke.name} has been added to ${collectionItem.name}`, type: 'success'});
     });
   }
 }
