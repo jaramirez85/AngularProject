@@ -49,6 +49,14 @@ export class CollectionsService {
     });
   }
 
+  
+  public removePokemonOfCollection(user: firebase.User, key: any, keyPokemon : any){
+    const promise = this.rdb.list(`collections/${this.user.uid}/${key}/pokemons/${keyPokemon}`).remove();
+    promise.then(_ => {
+      this.alertService.message({msg: 'The pokemon was removed of the collection', type: 'success'});
+    });
+  }
+
   addToCollection(poke: any, collectionItem : any) {
     const promise = this.rdb.list(`collections/${this.user.uid}/${collectionItem.key}/pokemons`).push(poke);
     promise.then(_ => {

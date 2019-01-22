@@ -2,6 +2,8 @@
     <div *ngFor="let poke of pokeList | async" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
         <div class="card">
             <div class="card-header bg-info text-white">
+                <button class="btn btn-primary btn-sm" (click)="removePokemon(poke?.key)">
+                    <i class="fa fa-minus-circle"></i></button>
                 {{poke.name}}
             </div>
             <img class="card-img-top" src="{{poke?.sprites?.front_default}}" />
