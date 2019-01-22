@@ -2,7 +2,7 @@
   <app-collection-modal-content  (submitted)="create($event)"></app-collection-modal-content>
 </div>
 <div class="row" id="collectionList">
-  <div *ngFor="let collection of collectionList" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+  <div *ngFor="let collection of collectionList | async" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <div class="card">
           <div class="card-header">
               {{collection.name}}
@@ -13,8 +13,8 @@
                 <span>{{collection.description}}</span>
               </div>
               <div class="col-12">  
-                <a href="#" class="card-link">Delete</a>
-                <a class="card-link" [routerLink]="['../collectionDetail', collection?.name]">Ver Collection</a>
+                  <button class="btn btn-outline-danger btn-sm" (click)="deleteCollection(collection?.key)">delete</button>
+                  <button class="btn btn-outline-info btn-sm" [routerLink]="['../collectionDetail', collection?.key]">go collection</button>
               </div>
           </div>
       </div>

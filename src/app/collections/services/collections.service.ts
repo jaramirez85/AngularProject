@@ -42,7 +42,7 @@ export class CollectionsService {
     });
   }
 
-  deleteCollection(key: any){
+  public deleteCollection(key: any){
     const promise = this.rdb.list(`collections/${this.user.uid}/${key}`).remove();
     promise.then(_ => {
       this.alertService.message({msg: 'The collection has been removed', type: 'success'});
@@ -55,8 +55,8 @@ export class CollectionsService {
       this.alertService.message({msg: `Pokemon ${poke.name} has been added to ${collectionItem.name}`, type: 'success'});
     });
   }
-  getPokemonsByCollection(key : any):AngularFireList<any>{
-    return this.rdb.list(`collections/${this.user.uid}/${key}/pokemons`);
+  getPokemonsByCollection(user:firebase.User, key : any):AngularFireList<any>{
+    return this.rdb.list(`collections/${user.uid}/${key}/pokemons`);
   }
 
 

@@ -8,7 +8,7 @@ export const routes:Routes = [
         component: CollectionListComponent
     },
     {
-        path: 'collectionDetail/:name',
+        path: 'collectionDetail/:key',
         component: CollectionPokemonsComponent,
     },
     {
