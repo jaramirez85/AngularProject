@@ -52,4 +52,9 @@ export class CollectionsService {
       this.alertService.message({msg: `Pokemon ${poke.name} has been added to ${collectionItem.name}`, type: 'success'});
     });
   }
+  getPokemonsByCollection(key : any):AngularFireList<any>{
+    return this.rdb.list(`collections/${this.user.uid}/${key}/pokemons`);
+  }
+
+
 }
