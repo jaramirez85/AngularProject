@@ -10,10 +10,41 @@ import { IPokeList } from '../../models/interfaces/poke-list';
 export class PokeListComponent implements OnInit {
 
   pokeList: IPokeList;
+  pokeListOri:IPokeList;
+  pokeListResults: any[];
+
   detailLink:string="../detail";
+  rowsPerPage:number=20;
+
+  private _pageNumber:number=1;
+  get pageNumber():number{
+    return this._pageNumber;
+  }
+  set pageNumber(value:number){
+    this.slicePokemons(value);
+    this._pageNumber=value;
+  }
+  totalSize:number;
+
+   slicePokemons(currentPage:number) {
+    this.pokeList.results = this.pokeListResults.slice();
+
+    let initialOff=(currentPage-1)*this.rowsPerPage;
+    let finalOff= initialOff + this.rowsPerPage -1 ;
+
+    if(finalOff > this.totalSize)
+      finalOff = this.totalSize;
+
+    console.log("INIT: "+initialOff+" FINAL "+finalOff);
+
+    this.pokeList.results= this.pokeList.results.slice(initialOff,finalOff);
+
+  }
+
   constructor(private pokeService: PokemonsService) { }
 
   ngOnInit() {
+    
     this.loadAllPokemons();
 
     this.pokeService.getSearchPokemons()
@@ -47,7 +78,12 @@ export class PokeListComponent implements OnInit {
   private loadAllPokemons() {
     this.pokeService.list()
       .subscribe(list => {
-        this.pokeList = list;
+        this.totalSize=list.results.length;
+        this.pokeList=list;
+        this.pokeListResults = list.results.slice();
+        this.slicePokemons(1);
+        console.log("TAMAÑO LISTA: "+this.pokeList.results.length);
+
       });
   }
 }
