@@ -5,13 +5,14 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import * as firebase from 'firebase/app';
 import { Observable, of } from 'rxjs';
 import { MessagesService } from 'src/app/alerts/services/messages.service';
-
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollectionsService {
   collectRef: AngularFireList<any>;
+  collects: Observable<any[]>;
   user: firebase.User;
   url: string = environment.apiUrl;
 
@@ -23,7 +24,10 @@ export class CollectionsService {
         this.collectRef = rdb.list(`collections/${this.user.uid}`);
       }
     });
+  }
 
+  getListCollection():AngularFireList<any>{
+    return this.collectRef;
   }
 
   listCollections(user: firebase.User): Observable<any[]> {
@@ -35,15 +39,8 @@ export class CollectionsService {
     const promise = this.collectRef.push(collection);
   }
 
-  addCollection(poke: any) {
-    const collect = {
-      name: 'testCollect',
-      description: 'testDescription',
-      pokemons: []
-    };
-    collect.pokemons.push(poke);
-
-    const promise = this.collectRef.push(collect);
+  addToCollection(poke: any, collectionItem : any) {
+    const promise = this.rdb.list(`collections/${this.user.uid}/${collectionItem.key}/pokemons`).push(poke);
     promise.then(_ => {
       this.alertService.message({msg: 'Pokemon Agregado a Collection', type: 'success'});
     });

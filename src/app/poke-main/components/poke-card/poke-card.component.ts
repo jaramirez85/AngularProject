@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PokemonsService } from '../../services/pokemons.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CollectionsService } from 'src/app/collections/services/collections.service';
+import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-poke-card',
@@ -12,9 +14,9 @@ export class PokeCardComponent implements OnInit {
 
   _pokeResult: {name: string, url: string};
   _poke: any;
-  collectiosList: any[] = [];
+  collectionList: Observable<any[]> ;
   @Input() detailLink:string;
-
+  
   @Input()
   get poke(): {name: string, url: string}{
     return this._pokeResult;
@@ -36,14 +38,12 @@ export class PokeCardComponent implements OnInit {
   ngOnInit() {
     this.authFire.authState.subscribe(
       user => {
-        if (user) {
-          this.collectionService.listCollections(user)
-            .subscribe(
-              list => {
-                this.collectiosList = list;
-              }
-            );
-        }
+          this.collectionList =
+          this.collectionService.getListCollection().snapshotChanges().pipe(
+            map(changes => 
+              changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+            )
+          );
       }
     );
   }
@@ -52,8 +52,8 @@ export class PokeCardComponent implements OnInit {
     this.pokeService.addFavorite(book);
   }
 
-  addToCollection(poke) {
-    this.collectionService.addCollection(poke);
+  addToCollection(poke, collection) {
+    this.collectionService.addToCollection(poke, collection);
   }
 
 }

@@ -5,7 +5,9 @@
               <div ngbDropdown class="d-inline-block" title="Adicionar a la colección...">
                 <a class="toggle-sidebar" id="dropdownBasic2" ngbDropdownToggle><i class="fa fa-bars"></i></a>        
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-                  <button *ngFor="let colection of collectiosList" class="dropdown-item" (click)="addToCollection(_poke, colection)">{{colection?.name}}</button>
+                  <li *ngFor="let collection of collectionList | async">
+                  <button  class="dropdown-item" (click)="addToCollection(_poke, collection)">{{collection?.name}}</button>
+                </li>
                 </div>
               </div>
             </div>
